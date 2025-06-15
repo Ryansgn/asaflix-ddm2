@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/asaflix-ddm2/static/css/main.8bcdfaf8.css",
+    "main.js": "/asaflix-ddm2/static/js/main.9eca8613.js",
+    "static/js/453.0cdbd17a.chunk.js": "/asaflix-ddm2/static/js/453.0cdbd17a.chunk.js",
+    "static/media/banner.png": "/asaflix-ddm2/static/media/banner.ba0879d1c3f7ccdb28fa.png",
+    "static/media/logo.png": "/asaflix-ddm2/static/media/logo.29ec926cb30eba82c1ef.png",
+    "static/media/login.png": "/asaflix-ddm2/static/media/login.ec85d522f33d8243bc3f.png",
+    "static/media/montserrat-latin-ext-400-normal.woff": "/asaflix-ddm2/static/media/montserrat-latin-ext-400-normal.06caa15b06166530143c.woff",
+    "static/media/montserrat-latin-ext-400-normal.woff2": "/asaflix-ddm2/static/media/montserrat-latin-ext-400-normal.1974241fa9a808c0c154.woff2",
+    "static/media/montserrat-latin-400-normal.woff": "/asaflix-ddm2/static/media/montserrat-latin-400-normal.218f0eedf6c57456ddb7.woff",
+    "static/media/montserrat-latin-400-normal.woff2": "/asaflix-ddm2/static/media/montserrat-latin-400-normal.4bc3bc9536f24ed8076d.woff2",
+    "static/media/4.png": "/asaflix-ddm2/static/media/4.d42d528e6f025a403beb.png",
+    "static/media/favorites.png": "/asaflix-ddm2/static/media/favorites.f5fe5d50f227b61475c0.png",
+    "static/media/montserrat-cyrillic-ext-400-normal.woff": "/asaflix-ddm2/static/media/montserrat-cyrillic-ext-400-normal.f6089642713132ee161e.woff",
+    "static/media/montserrat-cyrillic-ext-400-normal.woff2": "/asaflix-ddm2/static/media/montserrat-cyrillic-ext-400-normal.f455ee8f24fd612e2b15.woff2",
+    "static/media/montserrat-cyrillic-400-normal.woff2": "/asaflix-ddm2/static/media/montserrat-cyrillic-400-normal.4715847d051a164a7577.woff2",
+    "static/media/montserrat-cyrillic-400-normal.woff": "/asaflix-ddm2/static/media/montserrat-cyrillic-400-normal.45e884610f979c5321f7.woff",
+    "static/media/montserrat-vietnamese-400-normal.woff2": "/asaflix-ddm2/static/media/montserrat-vietnamese-400-normal.7da603c92e367751f991.woff2",
+    "static/media/montserrat-vietnamese-400-normal.woff": "/asaflix-ddm2/static/media/montserrat-vietnamese-400-normal.5fd7aca35adbd20e7a03.woff",
+    "index.html": "/asaflix-ddm2/index.html",
+    "main.8bcdfaf8.css.map": "/asaflix-ddm2/static/css/main.8bcdfaf8.css.map",
+    "main.9eca8613.js.map": "/asaflix-ddm2/static/js/main.9eca8613.js.map",
+    "453.0cdbd17a.chunk.js.map": "/asaflix-ddm2/static/js/453.0cdbd17a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8bcdfaf8.css",
+    "static/js/main.9eca8613.js"
+  ]
+}
