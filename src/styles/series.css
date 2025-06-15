@@ -1,0 +1,291 @@
+/* Container principal */
+.series-container {
+  padding: 2rem;
+  color: #fff;
+}
+
+/* Cabeçalho com título e botão */
+.series-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.series-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  height: 60px;
+  overflow: visible;
+  position: relative;
+}
+
+.favorite-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.favorite-icon {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Seção de descrição e dados */
+.series-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.series-overview {
+  flex: 1 1 60%;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.series-info {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 3rem;
+}
+
+.series-info-item {
+  text-align: center;
+}
+
+/* Trailer e imagem */
+.series-trailer-section {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.poster-container {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.poster-image {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.trailer-container {
+  flex: 2 1 600px;
+  min-width: 300px;
+  max-height: 1px;
+}
+
+.trailer-iframe-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  height: 90%;
+}
+
+.trailer-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border: none;
+}
+
+/* Elenco e Recomendações */
+.horizontal-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.actor-card, .rec-card {
+  text-align: center;
+  min-width: 120px;
+}
+
+.actor-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.actor-name {
+  margin: 0.5rem 0 0;
+}
+
+.actor-character {
+  font-size: 0.9rem;
+}
+
+.rec-card {
+  min-width: 150px;
+}
+
+.rec-image {
+  width: 150px;
+  height: 225px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.rec-title {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Provedores */
+.providers-section {
+  margin-top: 2rem;
+}
+
+.providers-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.provider-logo {
+  width: 45px;
+  height: 45px;
+}
+@media (max-width: 599px) {
+  /* Título e botão de favorito */
+
+
+  .series-title {
+    font-size: 1.6rem;
+  }
+
+ .series-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.favorite-button {
+  position: static;
+  transform: scale(0.8);
+  align-self: flex-start;
+}
+
+  /* Descrição e dados */
+  .series-details {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .series-overview,
+  .series-info {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+
+  .series-info {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Trailer e imagem */
+  .series-trailer-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .poster-container {
+    max-width: 100%;
+  }
+
+  .poster-image {
+    max-width: 100%;
+    max-height: 250px;
+    height: auto;
+  }
+
+  .trailer-container {
+    flex: 1 1 100%;
+    min-width: 100%;
+    max-height: none;
+  }
+
+  .trailer-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Proporção 16:9 */
+    height: 0;
+  }
+
+  .trailer-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+  }
+
+  /* Elenco e recomendações */
+  .horizontal-scroll {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.6rem;
+  }
+
+  .actor-card,
+  .rec-card {
+    min-width: 90px;
+  }
+
+  .actor-image,
+  .rec-image {
+    width: 90px;
+    height: 135px;
+  }
+
+  .rec-image {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Provedores */
+  .providers-group {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.6rem;
+  }
+
+  .provider-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Mensagem de carregamento */
+  .loading-message {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
