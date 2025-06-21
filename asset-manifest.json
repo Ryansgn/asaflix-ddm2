@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/asaflix-ddm2/static/css/main.5914af39.css",
-    "main.js": "/asaflix-ddm2/static/js/main.0e45565f.js",
+    "main.js": "/asaflix-ddm2/static/js/main.ae1d4a58.js",
     "static/js/453.0cdbd17a.chunk.js": "/asaflix-ddm2/static/js/453.0cdbd17a.chunk.js",
     "static/media/banner.png": "/asaflix-ddm2/static/media/banner.ba0879d1c3f7ccdb28fa.png",
     "static/media/logo.png": "/asaflix-ddm2/static/media/logo.29ec926cb30eba82c1ef.png",
@@ -20,11 +20,11 @@
     "static/media/montserrat-vietnamese-400-normal.woff": "/asaflix-ddm2/static/media/montserrat-vietnamese-400-normal.5fd7aca35adbd20e7a03.woff",
     "index.html": "/asaflix-ddm2/index.html",
     "main.5914af39.css.map": "/asaflix-ddm2/static/css/main.5914af39.css.map",
-    "main.0e45565f.js.map": "/asaflix-ddm2/static/js/main.0e45565f.js.map",
+    "main.ae1d4a58.js.map": "/asaflix-ddm2/static/js/main.ae1d4a58.js.map",
     "453.0cdbd17a.chunk.js.map": "/asaflix-ddm2/static/js/453.0cdbd17a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5914af39.css",
-    "static/js/main.0e45565f.js"
+    "static/js/main.ae1d4a58.js"
   ]
 }
