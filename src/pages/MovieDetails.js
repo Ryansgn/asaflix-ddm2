@@ -11,6 +11,7 @@ export default function MovieDetails() {
   const [recs, setRecs] = useState([]);
   const [trailer, setTrailer] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
+ const [userRating, setUserRating] = useState(0);
 
   useEffect(() => {
     getMovieDetails(id).then(res => setMovie(res.data));
@@ -31,6 +32,12 @@ export default function MovieDetails() {
     }).then(res => {
       setWatchProviders(res.data.results);
     });
+
+    // Carregar avaliação salva
+    const storedRatings = JSON.parse(localStorage.getItem('ratings')) || {};
+    if (storedRatings[id]) {
+      setUserRating(storedRatings[id]);
+    }
   }, [id]);
 
   const addToFavorites = () => {
@@ -51,6 +58,13 @@ export default function MovieDetails() {
       alert('Filme já está nos favoritos.');
     }
   };
+
+  const handleRating = (rating) => {
+  setUserRating(rating);
+  const storedRatings = JSON.parse(localStorage.getItem('ratings')) || {};
+  storedRatings[id] = rating;
+  localStorage.setItem('ratings', JSON.stringify(storedRatings));
+};
 
   if (!movie || !credits) return <div className="loading-message">Carregando...</div>;
 
@@ -78,6 +92,38 @@ export default function MovieDetails() {
           </div>
         </div>
       </div>
+      {/* Avaliação por estrelas */}
+  <div className="rating-section">
+  <h3>Sua Avaliação:</h3>
+  <div className="star-rating">
+    {[1, 2, 3, 4, 5].map((star) => {
+      const full = star <= userRating;
+      const half = userRating >= star - 0.5 && userRating < star;
+
+      return (
+        <span
+          key={star}
+          onClick={() => handleRating(half ? star - 0.5 : star)}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            handleRating(star - 0.5);
+          }}
+          style={{
+            cursor: 'pointer',
+            fontSize: '2rem',
+            color: full || half ? '#f5c518' : '#ccc',
+            marginRight: '5px',
+            userSelect: 'none'
+          }}
+          title={`${half ? star - 0.5 : star} estrelas (clique direito para meia estrela)`}
+        >
+          {full ? '★' : half ? '⯪' : '☆'}
+        </span>
+      );
+    })}
+  </div>
+</div>
+
 
       {trailer && (
         <div className="trailer-poster-section">
@@ -98,6 +144,7 @@ export default function MovieDetails() {
         </div>
       )}
 
+      
       <h3>Elenco:</h3>
       <div className="cast-list">
         {cast.map(actor => (

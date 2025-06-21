@@ -245,3 +245,15 @@
     font-size: 1rem;
   }
 }
+
+.rating-section {
+  margin: 20px 0;
+}
+
+.star-rating span {
+  transition: color 0.2s ease;
+}
+
+.star-rating span:hover {
+  color: #ffcc00;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/series.css'; // importa o CSS externo
+import '../styles/series.css';
 
 export default function SeriesDetails() {
   const { id } = useParams();
@@ -10,6 +10,23 @@ export default function SeriesDetails() {
   const [recs, setRecs] = useState([]);
   const [trailer, setTrailer] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
+  const [seasonEpisodes, setSeasonEpisodes] = useState([]);
+  const [seasonNumber, setSeasonNumber] = useState(1);
+  const [showEpisodes, setShowEpisodes] = useState(false);
+
+  // Estado da avaliação do usuário
+  const [userRating, setUserRating] = useState(() => {
+    const storedRatings = JSON.parse(localStorage.getItem('ratings')) || {};
+    return storedRatings[`serie-${id}`] || 0;
+  });
+
+  // Função de avaliação
+  const handleRating = (rating) => {
+    setUserRating(rating);
+    const storedRatings = JSON.parse(localStorage.getItem('ratings')) || {};
+    storedRatings[`serie-${id}`] = rating;
+    localStorage.setItem('ratings', JSON.stringify(storedRatings));
+  };
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/tv/${id}`, {
@@ -45,6 +62,17 @@ export default function SeriesDetails() {
       setWatchProviders(res.data.results);
     });
   }, [id]);
+
+  useEffect(() => {
+    if (serie) {
+      axios.get(`https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}`, {
+        params: {
+          api_key: '52469f4d00d508a136cd4c996823d0de',
+          language: 'pt-BR'
+        }
+      }).then(res => setSeasonEpisodes(res.data.episodes));
+    }
+  }, [id, seasonNumber, serie]);
 
   if (!serie || !credits) return <div className="series-container">Carregando...</div>;
 
@@ -95,7 +123,89 @@ export default function SeriesDetails() {
             Avaliação:<br /><br />
             <strong>⭐ {serie.vote_average.toFixed(2)}</strong>
           </div>
+          <div className="series-info-item">
+            Episódios:<br /><br />
+            <strong>{serie.number_of_episodes || 'N/A'}</strong>
+          </div>
         </div>
+      </div>
+
+      {/* Avaliação do usuário com estrelas */}
+      <div className="rating-section">
+        <h3>Sua Avaliação:</h3>
+        <div className="star-rating">
+          {[1, 2, 3, 4, 5].map((star) => {
+            const full = star <= userRating;
+            const half = userRating >= star - 0.5 && userRating < star;
+
+            return (
+              <span
+                key={star}
+                onClick={() => handleRating(half ? star - 0.5 : star)}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  handleRating(star - 0.5);
+                }}
+                style={{
+                  cursor: 'pointer',
+                  fontSize: '2rem',
+                  color: full || half ? '#f5c518' : '#ccc',
+                  marginRight: '5px',
+                  userSelect: 'none'
+                }}
+                title={`${half ? star - 0.5 : star} estrelas (clique direito para meia estrela)`}
+              >
+                {full ? '★' : half ? '⯪' : '☆'}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Temporadas e episódios */}
+      <div className="season-selector-toggle">
+        <button onClick={() => setShowEpisodes(!showEpisodes)} className="toggle-button">
+          {showEpisodes ? 'Esconder Temporadas' : 'Temporadas'}
+        </button>
+
+        {showEpisodes && (
+          <>
+            <select
+              className="season-dropdown"
+              value={seasonNumber}
+              onChange={(e) => setSeasonNumber(parseInt(e.target.value))}
+            >
+              {Array.from({ length: serie.number_of_seasons }, (_, index) => (
+                <option key={index} value={index + 1}>
+                  Temporada {index + 1}
+                </option>
+              ))}
+            </select>
+
+            <div className="season-episodes">
+              <h3>Episódios da Temporada {seasonNumber}:</h3>
+              <div className="episode-list">
+                {seasonEpisodes.map(episode => (
+                  <div key={episode.id} className="episode-card">
+                    {episode.still_path && (
+                      <img
+                        src={`https://image.tmdb.org/t/p/w300${episode.still_path}`}
+                        alt={episode.name}
+                        className="episode-image"
+                      />
+                    )}
+                    <div className="episode-info">
+                      <h4>{episode.name}</h4>
+                      <p>{episode.overview}</p>
+                      <p><strong>Duração:</strong> {episode.runtime} minutos</p>
+                      <p><strong>Avaliação:</strong> ⭐ {episode.vote_average.toFixed(2)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {trailer && (
